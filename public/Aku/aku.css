@@ -1,0 +1,6 @@
+.bg-breadcrumb {
+    background-image: url('/Template/img/sore.jpg');
+    background-size: cover;
+    background-position: center;
+    /* tambahkan properti CSS lainnya jika diperlukan */
+}

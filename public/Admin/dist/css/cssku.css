@@ -1,0 +1,29 @@
+
+      body {
+        background-image: url('Template/img/LOGOHKBP.png'); /* Ganti URL dengan URL gambar latar belakang Anda */
+        background-size: cover;
+        background-position: center;
+        color: #000; /* Hitam */
+      }
+      .card {
+        border: 2px solid #160085; /* Biru tua */
+      }
+      .card-header {
+        background-color: #160085; /* Biru tua */
+        color: #fff; /* Putih */
+      }
+      .login-box-msg {
+        color: #160085; /* Biru tua */
+      }
+      .form-control {
+        border: 1px solid #160085; /* Biru tua */
+      }
+      .btn-primary {
+        background-color: #160085; /* Biru tua */
+        border-color: #160085; /* Biru tua */
+      }
+      .btn-primary:hover {
+        background-color: #000; /* Hitam */
+        border-color: #000; /* Hitam */
+      }
+    
