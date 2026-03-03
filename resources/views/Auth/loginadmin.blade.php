@@ -48,6 +48,9 @@
             <div class="col-4">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
+            <div class="col-8 text-end">
+              <a href="{{ url('/') }}" class="btn btn-secondary btn-block">Kembali</a>
+            </div>
           </div>
         </form>
       </div>

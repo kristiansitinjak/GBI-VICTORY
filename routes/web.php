@@ -16,6 +16,7 @@ use App\Http\Controllers\JadwalibadahController;
 use App\Http\Controllers\JadwalibadahtampilanController;
 use App\Http\Controllers\DonasitampilanController;
 use App\Http\Controllers\DonasiController;
+use App\Http\Controllers\PendingJemaatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,11 @@ Route::get('/donasi', 'App\Http\Controllers\DonasitampilanController@index');
 
 Route::get('/datajemaat/search', 'App\Http\Controllers\DatajemaattampilanController@search')->name('datajemaat.search');
 
+// routes untuk pendaftaran jemaat
+Route::get('pendaftaran-jemaat', [PendingJemaatController::class, 'showForm']);
+Route::post('pendaftaran-jemaat', [PendingJemaatController::class, 'submit']);
+
+
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function(){
     Route::match(['get','post'], '/login', 'AdminController@Login');
     Route::middleware(['admins'])->group(function(){
@@ -64,6 +70,13 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/logout', 'AdminController@logout');
     });
     Route::group(['middleware' => ['admins']], function () {
+        // debug route: show raw pending_jemaats for admin inspection
+        Route::get('/pending-debug', [\App\Http\Controllers\PendingJemaatController::class, 'debugAll']);
+        // pending jemaat approval
+        Route::get('/pending-jemaat', [PendingJemaatController::class, 'index']);
+        Route::post('/pending-jemaat/{id}/approve', [PendingJemaatController::class, 'approve']);
+        Route::post('/pending-jemaat/{id}/reject', [PendingJemaatController::class, 'reject']);
+
         Route::get('/dashboard', 'WartaController@dashboard')->name('dashboard');
         Route::get('/warta' , 'WartaController@index' );
         Route::get('/tambahwarta' , 'WartaController@create' );

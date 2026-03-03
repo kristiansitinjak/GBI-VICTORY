@@ -2,23 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
-    /**     
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         DB::table('admins')->insert([
-            'nama' => "Kevin Christian B Rumapea",
-            'username' => "sabungan",
-            'password' => bcrypt("sabungan1"),
+            'nama'     => "Aan Kristian Sitinjak",
+            'username' => "aansitinjak",
+            'password' => Hash::make("aansitinjak1234321"), // Lebih aman dari bcrypt()
         ]);
     }
 }

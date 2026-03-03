@@ -72,6 +72,36 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto bg-light">
+        <!-- Notification Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-bell"></i>
+            @php
+              $unreadNotifications = \App\Models\AdminNotification::where('is_read', false)->get();
+            @endphp
+            @if($unreadNotifications->count() > 0)
+              <span class="badge badge-warning navbar-badge">{{ $unreadNotifications->count() }}</span>
+            @endif
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="width: 350px;">
+            @if($unreadNotifications->count() > 0)
+              @foreach($unreadNotifications as $notif)
+                <a href="{{ $notif->link }}" class="dropdown-item text-wrap">
+                  <i class="fas fa-circle-notch mr-2"></i>
+                  {{ $notif->message }}
+                  <span class="float-right text-muted text-sm">{{ $notif->created_at->diffForHumans() }}</span>
+                </a>
+                <div class="dropdown-divider"></div>
+              @endforeach
+              <a href="#" class="dropdown-item dropdown-footer">Lihat semua notifikasi</a>
+            @else
+              <div class="dropdown-item">
+                Tidak ada notifikasi baru
+              </div>
+            @endif
+          </div>
+        </li>
+
         <!-- User Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -166,6 +196,20 @@
                 <i class="nav-icon fas fa-user-plus"></i>
                 <p>
                   Data Jemaat
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/pending-jemaat" class="nav-link">
+                <i class="nav-icon fas fa-hourglass-half"></i>
+                <p>
+                  Pending Jemaat
+                  @php
+                    $pendingCount = \App\Models\PendingJemaat::where('status', 'pending')->count();
+                  @endphp
+                  @if($pendingCount > 0)
+                    <span class="right badge badge-primary">{{ $pendingCount }}</span>
+                  @endif
                 </p>
               </a>
             </li>

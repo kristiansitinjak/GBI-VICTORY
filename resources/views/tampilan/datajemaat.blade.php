@@ -125,4 +125,86 @@ document.addEventListener('click', function(event) {
     }
 });
 </script>
+
+<!-- Registration Section -->
+<div class="container mt-5 mb-5">
+    <div class="row align-items-center">
+        <!-- QR Code di sebelah kiri -->
+        <div class="col-md-4 text-center mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">Scan untuk Daftar</h5>
+                    <div id="qrcode" class="mb-3" style="background: white; padding: 20px; border-radius: 10px;">
+                        <!-- QR code akan di-generate dengan JavaScript -->
+                    </div>
+                    <p class="text-muted small">Scan QR Code untuk mengisi form pendaftaran</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol di sebelah kanan -->
+        <div class="col-md-8">
+            <div class="card shadow-sm border-primary">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">Daftar Sebagai Jemaat</h5>
+                    <p class="card-text text-muted mb-4">
+                        Apakah Anda ingin mendaftarkan keluarga Anda sebagai jemaat baru dalam gereja? 
+                        Silakan isi form pendaftaran dan data Anda akan ditinjau oleh admin sebelum ditampilkan di daftar jemaat resmi.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="{{ url('pendaftaran-jemaat') }}" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Daftar Sekarang
+                        </a>
+                        <a href="#" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#qrModal">
+                            <i class="fas fa-qrcode"></i> Lihat QR Lebih Besar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal untuk QR yang lebih besar -->
+<div class="modal fade" id="qrModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">QR Code Pendaftaran Jemaat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="qrcodeModal" style="background: white; padding: 30px; border-radius: 10px;">
+                    <!-- QR code akan di-generate dengan JavaScript -->
+                </div>
+                <p class="text-muted mt-3 mb-0">Scan dengan ponsel Anda untuk membuka form pendaftaran</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- QR Code Generator Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    // Generate QR Code untuk halaman utama
+    new QRCode(document.getElementById('qrcode'), {
+        text: '{{ url('pendaftaran-jemaat') }}',
+        width: 200,
+        height: 200,
+        colorDark: '#1f3a93',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Generate QR Code untuk modal
+    new QRCode(document.getElementById('qrcodeModal'), {
+        text: '{{ url('pendaftaran-jemaat') }}',
+        width: 250,
+        height: 250,
+        colorDark: '#1f3a93',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
+</script>
+
 @endsection
