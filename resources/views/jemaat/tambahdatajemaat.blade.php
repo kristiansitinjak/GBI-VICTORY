@@ -1,103 +1,147 @@
 @extends('layout.admin')
 
-@push('script')
-<script>
-    $(document).ready(function() {
-        $('#jumlahAnak').change(function() {
-            var numAnak = $(this).val();
-            var html = '';
-            for (var i = 2; i <= numAnak; i++) {
-                html += '<div class="form-group">';
-                html += '<label for="namaanak' + i + '" class="form-label">Nama Anak ' + i + '</label>';
-                html += '<input type="text" class="form-control @error("namaanak.' + (i-1) + '") is-invalid @enderror" id="namaanak' + i + '" name="namaanak[]" placeholder="Masukkan Nama Anak">';
-                html += '@error("namaanak.' + (i-1) + '")';
-                html += '<div class="alert alert-danger">{{ $message }}</div>';
-                html += '@enderror';
-                html += '</div>';
-            }
-            $('#additionalFields').html(html);
-        });
-    });
-</script>
-@endpush
-
 @section('content')
-<div class="container">
-    <h1 class="my-4">Tambah Data Jemaat</h1>
-    <form action="/admin/tambahdatajemaat" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="card-body">
-            <div class="mb-3">
-                <label for="namakeluarga" class="form-label">Nama Keluarga</label>
-                <input type="text" class="form-control @error('namakeluarga') is-invalid @enderror" id="namakeluarga" name="namakeluarga" placeholder="Masukkan Nama Keluarga">
-                @error('namakeluarga')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="sektor" class="form-label">Sektor</label>
-                <select class="form-control @error('sektor') is-invalid @enderror" id="sektor" name="sektor">
-                    <option value="">Pilih Sektor</option>
-                    <option value="Wijk I">Wijk I</option>
-                    <option value="Wijk II">Wijk II</option>
-                    <option value="Wijk III">Wijk III</option>
-                    <option value="Wijk IV">Wijk IV</option>
-                    <option value="Wijk V">Wijk V</option>
-                    <option value="Wijk VI">Wijk VI</option>
-                    <option value="Wijk VII">Wijk VII</option>
-                    <option value="Wijk VIII">Wijk VIII</option>
-                    <option value="Wijk IX">Wijk IX</option>
-                    <option value="Wijk X">Wijk X</option>
-                    <option value="Wijk XI">Wijk XI</option>
-                </select>
-                @error('sektor')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="mb-3">
-                <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" placeholder="Masukkan Alamat">
-                @error('alamat')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="namaayah" class="form-label">Nama Ayah</label>
-                <input type="text" class="form-control @error('namaayah') is-invalid @enderror" id="namaayah" name="namaayah" placeholder="Masukkan Nama Ayah">
-                @error('namaayah')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="namaibu" class="form-label">Nama Ibu</label>
-                <input type="text" class="form-control @error('namaibu') is-invalid @enderror" id="namaibu" name="namaibu" placeholder="Masukkan Nama Ibu">
-                @error('namaibu')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="jumlahAnak">Jumlah Anak</label>
-                <select class="form-control" id="jumlahAnak" name="jumlahAnak">
-                    @for ($i = 1; $i <= 30; $i++)
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                </select>
-            </div>
-            <div id="anak">
-                <div class="form-group">
-                    <label for="namaanak1" class="form-label">Nama Anak 1</label>
-                    <input type="text" class="form-control @error('namaanak.0') is-invalid @enderror" id="namaanak1" name="namaanak[]" placeholder="Masukkan Nama Anak">
-                    @error('namaanak.0')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+<div class="container-fluid py-4">
+    <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-bold"><i class="fas fa-user-plus me-2"></i> Tambah Data Keluarga Baru</h5>
+            <a href="{{ url('admin/datajemaat') }}" class="btn btn-light btn-sm text-primary fw-bold">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </a>
+        </div>
+        
+        <form action="{{ url('/admin/tambahdatajemaat') }}" method="POST">
+            @csrf
+            <div class="card-body">
+                <!-- Informasi Umum -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <label class="fw-bold">Sektor (Wijk) <span class="text-danger">*</span></label>
+                        <select class="form-select border-primary" name="sektor" required>
+                            <option value="">-- Pilih Sektor --</option>
+                            @foreach(['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'] as $roman)
+                                <option value="Wijk {{ $roman }}">Wijk {{ $roman }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="fw-bold">Alamat Lengkap <span class="text-danger">*</span></label>
+                        <input type="text" name="alamat" class="form-control border-primary" placeholder="Alamat Domisili" required>
+                    </div>
+                </div>
+
+                <!-- TABEL UTAMA (Format sesuai Kertas) -->
+                <div class="table-responsive rounded shadow-sm">
+                    <table class="table table-bordered align-middle text-center" style="min-width: 1300px; font-size: 0.85rem;">
+                        <thead class="table-dark">
+                            <tr>
+                                <th rowspan="2" style="width: 50px;">NO</th>
+                                <th rowspan="2" style="min-width: 200px;">NAMA LENGKAP (Sesuai KTP)</th>
+                                <th rowspan="2">Tempat Lahir</th>
+                                <th rowspan="2">Tanggal Lahir</th>
+                                <th rowspan="2">L/P</th>
+                                <th rowspan="2">Pendidikan</th>
+                                <th rowspan="2">Pekerjaan</th>
+                                <th rowspan="2">No. HP</th>
+                                <th colspan="3">STATUS GEREJAWI</th>
+                            </tr>
+                            <tr>
+                                <th>Baptis</th>
+                                <th>Sidi</th>
+                                <th>Nikah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- A. KEPALA KELUARGA -->
+                            <tr class="table-primary fw-bold text-start text-uppercase"><td colspan="11">A. Kepala Keluarga</td></tr>
+                            <tr>
+                                <td>1</td>
+                                <td><input type="text" name="kk[nama]" class="form-control form-control-sm" required placeholder="Nama Lengkap"></td>
+                                <td><input type="text" name="kk[tempat_lahir]" class="form-control form-control-sm"></td>
+                                <td><input type="date" name="kk[tgl_lahir]" class="form-control form-control-sm"></td>
+                                <td><select name="kk[jk]" class="form-select form-select-sm"><option value="L">L</option><option value="P">P</option></select></td>
+                                <td><input type="text" name="kk[pendidikan]" class="form-control form-control-sm"></td>
+                                <td><input type="text" name="kk[pekerjaan]" class="form-control form-control-sm"></td>
+                                <td><input type="text" name="kk[hp]" class="form-control form-control-sm only-number" required maxlength="15"></td>
+                                <td><input type="date" name="kk[tgl_baptis]" class="form-control form-control-sm"></td>
+                                <td><input type="date" name="kk[tgl_sidi]" class="form-control form-control-sm"></td>
+                                <td><input type="date" name="kk[tgl_nikah]" class="form-control form-control-sm"></td>
+                            </tr>
+
+                            <!-- B. PASANGAN -->
+                            <tr class="table-primary fw-bold text-start text-uppercase"><td colspan="11">B. Pasangan (Istri/Suami)</td></tr>
+                            <tr>
+                                <td>1</td>
+                                <td><input type="text" name="pasangan[nama]" class="form-control form-control-sm" placeholder="Isi jika ada"></td>
+                                <td><input type="text" name="pasangan[tempat_lahir]" class="form-control form-control-sm"></td>
+                                <td><input type="date" name="pasangan[tgl_lahir]" class="form-control form-control-sm"></td>
+                                <td><select name="pasangan[jk]" class="form-select form-select-sm"><option value="P">P</option><option value="L">L</option></select></td>
+                                <td><input type="text" name="pasangan[pendidikan]" class="form-control form-control-sm"></td>
+                                <td><input type="text" name="pasangan[pekerjaan]" class="form-control form-control-sm"></td>
+                                <td><input type="text" name="pasangan[hp]" class="form-control form-control-sm only-number" maxlength="15"></td>
+                                <td><input type="date" name="pasangan[tgl_baptis]" class="form-control form-control-sm"></td>
+                                <td><input type="date" name="pasangan[tgl_sidi]" class="form-control form-control-sm"></td>
+                                <td><input type="date" name="pasangan[tgl_nikah]" class="form-control form-control-sm"></td>
+                            </tr>
+
+                            <!-- C. ANAK -->
+                            <tr class="table-primary fw-bold text-start text-uppercase">
+                                <td colspan="11" class="d-flex justify-content-between align-items-center bg-primary text-white border-0 rounded-0">
+                                    <span>C. ANAK (Opsional)</span>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="tambahAnak()"><i class="fas fa-plus"></i> Tambah Baris</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody id="container-anak">
+                            <!-- JS akan mengisi baris anak di sini -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div id="additionalFields"></div>
-        </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+            <div class="card-footer bg-white py-3">
+                <button type="submit" class="btn btn-primary px-5 fw-bold shadow"><i class="fas fa-save me-2"></i> Simpan Seluruh Keluarga</button>
+            </div>
+        </form>
+    </div>
 </div>
+
+<script>
+    let anakCount = 0;
+
+    function tambahAnak() {
+        anakCount++;
+        const container = document.getElementById('container-anak');
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${anakCount}</td>
+            <td><input type="text" name="anak[${anakCount}][nama]" class="form-control form-control-sm"></td>
+            <td><input type="text" name="anak[${anakCount}][tempat_lahir]" class="form-control form-control-sm"></td>
+            <td><input type="date" name="anak[${anakCount}][tgl_lahir]" class="form-control form-control-sm"></td>
+            <td><select name="anak[${anakCount}][jk]" class="form-select form-select-sm"><option value="L">L</option><option value="P">P</option></select></td>
+            <td><input type="text" name="anak[${anakCount}][pendidikan]" class="form-control form-control-sm"></td>
+            <td><input type="text" name="anak[${anakCount}][pekerjaan]" class="form-control form-control-sm"></td>
+            <td><input type="text" name="anak[${anakCount}][hp]" class="form-control form-control-sm only-number" maxlength="15"></td>
+            <td><input type="date" name="anak[${anakCount}][tgl_baptis]" class="form-control form-control-sm"></td>
+            <td><input type="date" name="anak[${anakCount}][tgl_sidi]" class="form-control form-control-sm"></td>
+            <td><input type="date" name="anak[${anakCount}][tgl_nikah]" class="form-control form-control-sm"></td>
+        `;
+        container.appendChild(row);
+        initOnlyNumber();
+    }
+
+    function initOnlyNumber() {
+        document.querySelectorAll('.only-number').forEach(i => {
+            i.oninput = function() { this.value = this.value.replace(/[^0-9]/g, ''); };
+        });
+    }
+
+    // Load 2 baris anak di awal
+    tambahAnak(); tambahAnak();
+</script>
+
+<style>
+    .form-control-sm, .form-select-sm { border-radius: 4px; border: 1px solid #ced4da; }
+    .table thead th { vertical-align: middle; border-bottom: 2px solid #333; }
+    .table-primary { background-color: #d1d1ff !important; color: #333; }
+</style>
 @endsection

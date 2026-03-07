@@ -1,102 +1,112 @@
 @extends('layout.admin')
 
-@push('script')
+@section('content')
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold"><i class="fas fa-edit me-2"></i> Edit Data: {{ $datajemaat->nama_lengkap }}</h5>
+                    <a href="{{ url('admin/datajemaat/view/'.$datajemaat->id) }}" class="btn btn-light btn-sm text-warning fw-bold">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </a>
+                </div>
+
+                <form action="{{ url('/admin/updatedatajemaat/'.$datajemaat->id) }}" method="POST">
+                    @csrf
+                    <div class="card-body p-4">
+                        @if($datajemaat->hubungan_keluarga == 'Kepala Keluarga')
+                            <div class="alert alert-info small">
+                                <i class="fas fa-info-circle me-1"></i> <strong>Info:</strong> Mengubah Alamat atau Sektor pada Kepala Keluarga akan otomatis mengubah data seluruh anggota keluarga lainnya.
+                            </div>
+                        @endif
+
+                        <div class="row">
+                            <!-- Data Identitas -->
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Nama Lengkap (Sesuai KTP)</label>
+                                <input type="text" name="nama_lengkap" class="form-control" value="{{ $datajemaat->nama_lengkap }}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Hubungan Keluarga</label>
+                                <select name="hubungan_keluarga" class="form-select bg-light" required>
+                                    <option value="Kepala Keluarga" {{ $datajemaat->hubungan_keluarga == 'Kepala Keluarga' ? 'selected' : '' }}>Kepala Keluarga</option>
+                                    <option value="Pasangan" {{ $datajemaat->hubungan_keluarga == 'Pasangan' ? 'selected' : '' }}>Pasangan (Istri/Suami)</option>
+                                    <option value="Anak" {{ $datajemaat->hubungan_keluarga == 'Anak' ? 'selected' : '' }}>Anak</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Tempat Lahir</label>
+                                <input type="text" name="tempat_lahir" class="form-control" value="{{ $datajemaat->tempat_lahir }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Tanggal Lahir</label>
+                                <input type="date" name="tanggal_lahir" class="form-control" value="{{ $datajemaat->tanggal_lahir }}">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Jenis Kelamin</label>
+                                <select name="jenis_kelamin" class="form-select">
+                                    <option value="L" {{ $datajemaat->jenis_kelamin == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="P" {{ $datajemaat->jenis_kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">No. HP / WhatsApp</label>
+                                <input type="text" name="telepon" class="form-control only-number" value="{{ $datajemaat->telepon }}" maxlength="15">
+                            </div>
+
+                            <hr class="my-3">
+
+                            <!-- Data Alamat & Sektor -->
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Sektor (Wijk)</label>
+                                <select class="form-select border-primary" name="sektor" required>
+                                    @foreach(['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'] as $roman)
+                                        @php $val = "Wijk $roman"; @endphp
+                                        <option value="{{ $val }}" {{ $datajemaat->sektor == $val ? 'selected' : '' }}>{{ $val }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold">Alamat Domisili</label>
+                                <input type="text" name="alamat" class="form-control border-primary" value="{{ $datajemaat->alamat }}" required>
+                            </div>
+
+                            <hr class="my-3">
+
+                            <!-- Data Status Gerejawi -->
+                            <h6 class="fw-bold text-primary mb-3"><i class="fas fa-church me-1"></i> Status Gerejawi</h6>
+                            <div class="col-md-4 mb-3">
+                                <label class="small fw-bold">Tanggal Baptis</label>
+                                <input type="date" name="tgl_baptis" class="form-control" value="{{ $datajemaat->tgl_baptis }}">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="small fw-bold">Tanggal Sidi</label>
+                                <input type="date" name="tgl_sidi" class="form-control" value="{{ $datajemaat->tgl_sidi }}">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="small fw-bold">Tanggal Nikah</label>
+                                <input type="date" name="tgl_nikah" class="form-control" value="{{ $datajemaat->tgl_nikah }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white p-3 d-flex justify-content-between">
+                        <button type="reset" class="btn btn-outline-secondary px-4">Reset</button>
+                        <button type="submit" class="btn btn-warning px-5 fw-bold shadow-sm text-white">
+                            <i class="fas fa-save me-1"></i> Update Data
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    $(document).ready(function() {
-        $('#jumlahAnak').change(function() {
-            var numAnak = $(this).val();
-            var html = '';
-            for (var i = 2; i <= numAnak; i++) {
-                html += '<div class="form-group">';
-                html += '<label for="namaanak' + i + '" class="form-label">Nama Anak ' + i + '</label>';
-                html += '<input type="text" class="form-control @error("namaanak.' + (i-1) + '") is-invalid @enderror" id="namaanak' + i + '" name="namaanak[]" placeholder="Masukkan Nama Anak">';
-                html += '@error("namaanak.' + (i-1) + '")';
-                html += '<div class="alert alert-danger">{{ $message }}</div>';
-                html += '@enderror';
-                html += '</div>';
-            }
-            $('#additionalFields').html(html);
-        });
+    document.querySelectorAll('.only-number').forEach(i => {
+        i.oninput = function() { this.value = this.value.replace(/[^0-9]/g, ''); };
     });
 </script>
-@endpush
-
-@section('content')
-<div class="container">
-    <a href="{{ url('admin/datajemaat') }}" class="btn btn-success mb-3">Back</a>
-    <form action="{{ url('/admin/updatedatajemaat/' . $datajemaat->id) }}" method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="card-body">
-            <div class="mb-3">
-                <label for="namakeluarga" class="form-label">Nama Keluarga</label>
-                <input type="text" class="form-control @error('namakeluarga') is-invalid @enderror" id="namakeluarga" name="namakeluarga" placeholder="Masukkan Nama Keluarga">
-                @error('namakeluarga')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="sektor" class="form-label">Sektor</label>
-                <select class="form-control @error('sektor') is-invalid @enderror" id="sektor" name="sektor">
-                    <option value="">Pilih Sektor</option>
-                    <option value="Wijk I">Wijk I</option>
-                    <option value="Wijk II">Wijk II</option>
-                    <option value="Wijk III">Wijk III</option>
-                    <option value="Wijk IV">Wijk IV</option>
-                    <option value="Wijk V">Wijk V</option>
-                    <option value="Wijk VI">Wijk VI</option>
-                    <option value="Wijk VII">Wijk VII</option>
-                    <option value="Wijk VIII">Wijk VIII</option>
-                    <option value="Wijk IX">Wijk IX</option>
-                    <option value="Wijk X">Wijk X</option>
-                    <option value="Wijk XI">Wijk XI</option>
-                </select>
-                @error('sektor')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="mb-3">
-                <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" placeholder="Masukkan Alamat">
-                @error('alamat')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="namaayah" class="form-label">Nama Ayah</label>
-                <input type="text" class="form-control @error('namaayah') is-invalid @enderror" id="namaayah" name="namaayah" placeholder="Masukkan Nama Ayah">
-                @error('namaayah')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="namaibu" class="form-label">Nama Ibu</label>
-                <input type="text" class="form-control @error('namaibu') is-invalid @enderror" id="namaibu" name="namaibu" placeholder="Masukkan Nama Ibu">
-                @error('namaibu')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="jumlahAnak">Jumlah Anak</label>
-                <select class="form-control" id="jumlahAnak" name="jumlahAnak">
-                    @for ($i = 1; $i <= 30; $i++)
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                </select>
-            </div>
-            <div id="anak">
-                <div class="form-group">
-                    <label for="namaanak1" class="form-label">Nama Anak 1</label>
-                    <input type="text" class="form-control @error('namaanak.0') is-invalid @enderror" id="namaanak1" name="namaanak[]" placeholder="Masukkan Nama Anak">
-                    @error('namaanak.0')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-        
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-</div>
 @endsection

@@ -11,13 +11,25 @@ class Datajemaat extends Model
 
     protected $table = 'datajemaats';
 
-    // Tambahkan baris $fillable di bawah ini
     protected $fillable = [
         'namakeluarga',
         'sektor',
         'alamat',
-        'telepon', // pastikan kolom ini ada di database tabel datajemaats
+        'telepon',
+        'nama_lengkap',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'pendidikan',
+        'pekerjaan',
+        'tgl_baptis',
+        'tgl_sidi',
+        'tgl_nikah',
+        'hubungan_keluarga', // Penting untuk membedakan peran dalam keluarga
     ];
+
+    // Jika Anda ingin menggunakan format tanggal otomatis (Opsional)
+    protected $dates = ['tanggal_lahir', 'tgl_baptis', 'tgl_sidi', 'tgl_nikah'];
 
     public function keluarga()
     {

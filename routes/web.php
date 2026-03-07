@@ -100,7 +100,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/datajemaat' , 'DatajemaatController@index' );
         Route::get('/tambahdatajemaat' , 'DatajemaatController@create' );
         Route::get('/editdatajemaat/{datajemaatId}' , 'DatajemaatController@edit' );
-        Route::get('/viewdatajemaat/{datajemaatId}' , 'DatajemaatController@show' );
+        Route::get('/datajemaat/view/{datajemaatId}' , 'DatajemaatController@viewDetail' );
+        Route::get('/datajemaat/cetak-kta/{id}', 'DatajemaatController@cetakKTA')->name('jemaat.cetak-kta');
         Route::post('/updatedatajemaat/{datajemaatId}' , 'DatajemaatController@update' );
         Route::delete('/hapusdatajemaat/{datajemaatId}' , 'DatajemaatController@destroy' );
         Route::post('/tambahdatajemaat' , 'DatajemaatController@store' );

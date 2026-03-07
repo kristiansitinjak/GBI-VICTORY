@@ -11,17 +11,26 @@ class PendingJemaat extends Model
 
     protected $table = 'pending_jemaats';
 
+    // Status Constants
+    const STATUS_PENDING = 'pending';
+    const STATUS_APPROVED = 'approved';
+    const STATUS_REJECTED = 'rejected';
+
     protected $fillable = [
         'namakeluarga',
         'sektor',
         'alamat',
         'telepon',
-        'lat',
-        'lng',
-        'status', // pending, approved, rejected
+        'nama_lengkap',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'pendidikan',
+        'pekerjaan',
+        'tgl_baptis',
+        'tgl_sidi',
+        'tgl_nikah',
+        'hubungan_keluarga',
+        'status', // Kolom pembeda status persetujuan
     ];
-
-    const STATUS_PENDING  = 'pending';
-    const STATUS_APPROVED = 'approved';
-    const STATUS_REJECTED = 'rejected';
 }

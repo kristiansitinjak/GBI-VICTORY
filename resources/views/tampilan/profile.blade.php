@@ -20,8 +20,8 @@
             </div>
             <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png);">
                 <h5 class="section-about-title pe-3">Foto</h5>
-                <h1 class="mb-4">Parhalaho <span class="text-primary">HKBP HKBP-Sabungan-Siborongborong</span></h1>
-                <p class="mb-4">Foto yang ditampilkan adalah salah satu momen dari pelayanan atau Parhalado yang berlokasi di HKBP Sabungan Kota. Parhalado atau pelayanan merupakan bagian penting dalam kehidupan gereja, di mana jemaat berkumpul untuk beribadah, belajar Firman Tuhan, serta saling mendukung dan melayani satu sama lain dalam kehidupan rohani.</p>
+                <h1 class="mb-4">Pengurus  <span class="text-primary">Gereja Bethel Indonesia Victory</span></h1>
+                <p class="mb-4">Foto yang ditampilkan adalah salah satu momen dari pelayanan atau Pengurus yang berlokasi di Gereja Bethel Indonesia Victory. Pengurus atau pelayanan merupakan bagian penting dalam kehidupan gereja, di mana jemaat berkumpul untuk beribadah, belajar Firman Tuhan, serta saling mendukung dan melayani satu sama lain dalam kehidupan rohani.</p>
                 <div class="row gy-2 gx-4 mb-4"></div>
                 
             </div>
@@ -35,7 +35,7 @@
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 900px;">
             <h5 class="section-title px-3  ">--</h5>
-            <h1 class="mb-0">Pangula Huria</h1>
+            <h1 class="mb-0">Kepala Jemaat Gereja Bethel Indonesia Victory</h1>
         </div>
         <div class="row g-4">
             @foreach ($dataPengurus as $item)

@@ -64,7 +64,7 @@
 <div class="container-fluid position-relative p-0">
   <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
       <a href="/" class="navbar-brand p-0">
-          <h1 class="m-0"><i class="fas fa-church me-3" style="font-size: 1.7rem; "></i><span style="font-size: 30px">HKBP Sabungan Siborong-borong</span></h1>
+          <h1 class="m-0"><i class="fas fa-church me-3" style="font-size: 1.7rem; "></i><span style="font-size: 30px">Gereja Bethel Indonesia Victory</span></h1>
           {{-- <img src="{{URL::asset('Template/img/logo.png')}}" alt="Logo">  --}}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -101,13 +101,13 @@
       <!-- Left Section -->
       <div class="col-md-6 col-lg-6 col-xl-8">
         <div class="footer-item d-flex flex-column">
-          <h4 class="mb-4 text-white">HKBP SABUNGAN SIBORONGBORONG</h4>
+          <h4 class="mb-4 text-white">Gereja Bethel Indonesia Victory</h4>
           <a href="https://www.google.co.id/maps/search/Jl.+Tugu+no.+2,+Siaro,+Siborongborong,+Kabupaten+Tapanuli+Utara/@2.2192168,98.973798,16z/data=!3m1!4b1?hl=id&entry=ttu">
-            <i class="fas fa-home me-2"></i> Jl. Tugu no. 2, Siaro, Siborongborong, Kabupaten Tapanuli Utara
+            <i class="fas fa-home me-2"></i> Jl. Com.Yos Sudarso No.35, Kota Beringin, Sibolga Kota, Kota Sibolga, Sumatera Utara 22513
           </a>
           <a href="tel:0877-3996-3516"><i class="fas fa-phone me-2"></i>0877-3996-3516</a>
           <a href="mailto:siborongboronghkbpsabungan@gmail.com">
-            <i class="fas fa-envelope me-2"></i> siborongboronghkbpsabungan@gmail.com
+            <i class="fas fa-envelope me-2"></i> EMAILEXAMPLE@gmail.com
           </a>
           <div class="d-flex align-items-center">
             <i class="fas fa-share fa-2x text-white me-2"></i>
@@ -147,13 +147,13 @@
   <div class="container">
       <div class="row g-4 align-items-center">
           <div class="col-md-6 text-center text-md-end mb-md-0">
-              <i class="fas fa-copyright me-2"></i>2024 HKBP Sabungan
+              <i class="fas fa-copyright me-2"></i>2024 Gereja Bethel Indonesia Victory
           </div>
           <div class="col-md-6 text-center text-md-start">
               <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
               <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
               <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-              Designed By Kelompok 11 PA-1
+              XXXXXXXXXX
           </div>
           </div>
       </div>

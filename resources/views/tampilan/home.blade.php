@@ -163,7 +163,7 @@
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Horas!!</h4>
-                            <h1 class="display-2 text-capitalize text-white mb-4">Selamat Datang Di HKBP Sabungan!</h1>
+                            <h1 class="display-2 text-capitalize text-white mb-4">Selamat Datang Di Gereja Bethel Indonesia Victory!</h1>
                         </div>
                     </div>
                 </div>
@@ -171,8 +171,8 @@
                     <img src="{{URL::asset('Template/img/GEREJA2.jpg')}}" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Horas!!</h4>
-                            <h1 class="display-2 text-capitalize text-white mb-4">Selamat Datang Di HKBP Sabungan!</h1>
+                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Salam Sejahtera!!</h4>
+                            <h1 class="display-2 text-capitalize text-white mb-4">Selamat Datang Di Gereja Bethel Indonesia Victory!</h1>
                         </div>
                     </div>
                 </div>
@@ -180,8 +180,8 @@
                     <img src="{{ URL::asset('Template/img/GEREJA3.jpg') }}" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Horas!!</h4>
-                            <h1 class="display-2 text-capitalize text-white mb-4">Selamat Datang Di HKBP Sabungan!</h1>
+                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Salam Sejahtera!!</h4>
+                            <h1 class="display-2 text-capitalize text-white mb-4">Selamat Datang Di Gereja Bethel Indonesia Victory!</h1>
                         </div>
                     </div>
                 </div>
@@ -268,26 +268,21 @@
                 <div class="col-lg-12 text-center" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)); padding: 30px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="section-header mb-4">
                         <h5 class="section-subtitle" style="font-size: 1.5rem; color: #6c757d; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;">Sejarah Gereja</h5>
-                        <h1 class="" style="font-size: 3rem; font-weight: bold; color: #2C3E50;">Selamat Datang di HKBP Sabungan Kota</h1>
+                        <h1 class="" style="font-size: 3rem; font-weight: bold; color: #2C3E50;">Selamat Datang di Gereja Bethel Indonesia Victory</h1>
                     </div>
                     <div class="section-intro mb-4">
                         <img src="{{ URL::asset('Template/img/pexels-adrien-olichon-1257089-13282716.jpg') }}" alt="Gambar Sejarah Gereja" class="img-fluids float-start me-3 mb-3" style="max-width: 50%; height: auto;">
                         <p style="text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #555;">
-                            <span style="font-size: 3rem; font-weight: 100; line-height: 1; vertical-align: bottom;">G</span>ereja HKBP Sabungan Siborongborong berdiri pada tahun 1892 dan saat ini sudah berumur 130 tahun. Awal mula berdirinya gereja ini tidak terlepas dari sejarah berdirinya Gereja Dame Saitnihuta yang didirikan oleh Dr. I. L. Nommensen pada tanggal 20 Mei 1864. Ketika Nommensen mendirikan Gereja Dame Saitnihuta, Raja Naor Hutasoit yang merupakan kelahiran Siborongborong merantau ke Silindung Simorangkir dan memberikan hatinya untuk dibaptis menjadi Kristen. Setelah ia menjadi Kristen, ia kembali ke daerah kelahirannya pada tahun 1885. Ia mengajak saudaranya untuk dibaptis yaitu; Raja Isak Hutasoit, Raja Aristarkus Hutasoit, Raja Elias Hutasoit, Raja Aron Hutasoit, dan Raja Simon Hutasoit, dan mereka membuka perkampungan di Tapian Nauli Siborongborong.
+                            <span style="font-size: 3rem; font-weight: 100; line-height: 1; vertical-align: bottom;">G</span>ereja Bethel Indonesia Victory Sibolga hadir sebagai bagian dari keluarga besar Sinode Gereja Bethel Indonesia yang memiliki misi untuk membawa transformasi bagi jemaat dan masyarakat di wilayah Sibolga dan sekitarnya. Berdirinya gereja ini didasari oleh kerinduan untuk memenangkan jiwa dan menjadi saluran berkat bagi kota ini melalui pelayanan yang penuh kuasa dan kasih Tuhan.
+                            Sejak awal pembentukannya, GBI Victory terus bertumbuh sebagai komunitas jemaat yang dinamis, menekankan pada pertumbuhan rohani melalui ibadah kontemporer dan pemuridan yang kuat. Lokasinya yang strategis di Sibolga menjadikannya sebagai pusat pelayanan yang inklusif, merangkul berbagai latar belakang jemaat untuk bersama-sama mengalami kemenangan (victory) di dalam Kristus. Hingga saat ini, gereja tetap setia menjalankan visi untuk membangun jemaat yang militan dan berdampak bagi lingkungan sekitar.
                         </p>
                     </div>
                     <div class="section-content mb-4">
                         <p style="text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #555;">
-                            Pada saat itu pemerintah Belanda membuat “Pasanggarahan” di dekat Onangudang Siborongborong. Pemerintah Belanda mengangkat Op. Toga Tunggal Hutasoit menjadi Raja Ihutan Nahor Hutasoit sebagai pengajar di Siborongborong hingga Pohan. Raja Pandua Nahor Hutasoit meminta kepada marga Sihombing, Pohan, dan Marbun untuk mendekatkan tempat tinggal mereka ke pinggir jalan Onangudang. Nommensen mengusulkan agar tempat penginapan tersebut menjadi tempat peribadahan mereka. Setelah jemaat bertambah, Raja Nahor Hutasoit meminta Nommensen untuk mengirim pelayan untuk melayani jemaat. Nommensen mengirim Gr. Eras Simanjuntak sebagai guru untuk melayani mereka. Mereka kemudian sepakat membangun gedung gereja sekaligus gedung sekolah. Mereka membeli satu rumah dari Silando untuk dijadikan gereja dan sekolah di Tapian Nauli Siborongborong, lokasi gereja saat ini. Tanah gereja adalah sumbangan dari Raja Aristarkus Hutasoit. Pada Minggu, 13 Juli 1892, enam pasangan dibaptis oleh Pdt. Ernist Pasaribu dari Paniaran dan gereja diresmikan di Siborongborong.
-                        </p>
-                        <p style="text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #555;">
-                            Pada tahun 1894, Raja Pandua Nahor Hutasoit meminta Nommensen untuk mengirim seorang Pendeta sebagai pengganti Gr. Eras Simanjuntak karena belum adanya Pendeta di Humbang. Nommensen mengirim Pdt. Sett untuk melayani di gereja Siborongborong dan wilayah Humbang. Pdt. Sett meminta agar gedung gereja dipindahkan ke Silaitlait Hariara, sekitar 4 km dari Tapian Nauli Siborongborong. Awalnya, Raja Pandua Nahor Hutasoit tidak menyetujui, tetapi demi perkembangan injil di utara, seperti Paranginan, Hutaginjang, dan Hasundutan, usulan tersebut disetujui. Gereja dipindahkan ke Silaitlait Hariara dan diberi nama “Huria Silaitlait”. Gedung gereja, sekolah, dan tempat tinggal pendeta ditempatkan di Silaitlait.
-                        </p>
-                        <p style="text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #555;">
-                            Huria Silaitlait berkembang baik dalam pelayanan dan pertumbuhan jemaat yang datang untuk dibaptis dan belajar di sekolah Silaitlait. Namun, pada tahun 1900, setelah Pendeta tidak tinggal di Silaitlait dan masyarakat di Siborongborong bertambah, gereja direncanakan untuk dipindahkan kembali ke tempat semula di Tapian Nauli Siborongborong. Gereja berkembang dan jemaat bertambah. Jemaat mengusulkan untuk memperbesar rumah pelayan dan gedung gereja. Argilaus Hutasoit memberikan tanah tambahan dan pada 24 Februari 1917, gereja dipindahkan ke tempat saat ini. Pada tahun 1917, jemaat yang datang beribadah bertambah hingga mencapai 900 jiwa atau 193 kepala keluarga.
-                        </p>
-                        <p style="text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #555;">
-                            Melihat pertambahan jemaat, gedung gereja dibangun lebih besar untuk kenyamanan beribadah. Pada 7 Agustus 1956, Panita Pabalga Gareja (PPG) dibentuk untuk membangun gedung gereja baru. Namun, beberapa jemaat merencanakan mendirikan gereja lain dan membuat peribadahan sendiri di sebuah sekolah. Pada 24 November 1957, Praeses Distrik Humbang meresmikan gereja baru bernama Gereja Kota Siborongborong dan meletakkan batu pertama. Gereja lama diberi nama Gereja Sabungan Siborongborong. Jemaat HKBP Sabungan Siborongborong tetap semangat melanjutkan pembangunan gereja. Pada 22 September 1957, peletakan batu pertama dilakukan. Pada 26 April 1973, jemaat di Silaitlait menyetujui peribadahan sendiri di Silaitlait karena jumlah jemaat mencapai 80 KK.
+                            Visi dan Misi GBI Victory Sibolga
+                            GBI Victory Sibolga bergerak dengan visi untuk menjadi gereja yang relevan dan berdampak, membawa setiap jemaat pada pengenalan yang mendalam akan Kristus. Misi kami adalah membangun komunitas yang kuat melalui pengajaran firman yang praktis, pujian penyembahan yang kreatif, serta pelayanan yang tulus kepada sesama di kota Sibolga. Kami percaya bahwa setiap orang dipanggil untuk menjadi pemenang dalam setiap aspek kehidupan mereka.
+                            Struktur Pelayanan dan Komunitas
+                            Untuk mendukung pertumbuhan rohani yang maksimal, GBI Victory Sibolga menyediakan wadah bagi setiap tingkatan usia, mulai dari sekolah minggu (Victory Kids), pelayanan anak muda (Youth Victory), hingga persekutuan kaum wanita dan pria. Fokus utama kami adalah melalui COOL (Community of Love), di mana jemaat dapat saling membangun, memperhatikan, dan bertumbuh bersama dalam kelompok kecil yang hangat dan akrab.
                         </p>
                     </div>
                     <div class="section-footer">

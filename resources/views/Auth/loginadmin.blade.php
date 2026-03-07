@@ -22,10 +22,10 @@
   <div class="login-box">
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="warta.dashboard" class="h1">HKBP Sabungan Siborongborong</a>
+        <a href="warta.dashboard" class="h1">Gereja Bethel Indonesia Victory</a>
       </div>
       <div class="card-body">
-        <p class="login-box-msg">Horas Di hita Saluhutna</p>
+        <p class="login-box-msg">Damai Sejaterah Bagi Kita Seluruhnya</p>
         <form action="/admin/login" method="post">
           @csrf
           <div class="input-group mb-3">

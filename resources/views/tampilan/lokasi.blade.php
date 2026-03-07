@@ -16,8 +16,7 @@
                 <div class="col-12">
                     <div class="rounded">
                         <iframe class="w-100" 
-                        style="height: 450px; border-radius: 5%; " src ="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15947.320905729994!2d98.95084838933984!3d2.217610655968862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e1115ee81ea2f%3A0x9ac9cd5000c88893!2sHKBP%20Sabungan%20Siborongborong!5e0!3m2!1sid!2sid!4v1714708013214!5m2!1sid!2sid"
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        style="height: 450px; border-radius: 5%; " src ="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4180.20435865153!2d98.77210289370609!3d1.7410976836290395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302ef5a2cdd25e5b%3A0x5adbd1e14a705751!2sGBI%20Jemaat%20VICTORY%2C%20Sibolga%20Kota!5e0!3m2!1sid!2sid!4v1772803511740!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">"></iframe>
                     </div>
                 </div>
 
@@ -27,18 +26,18 @@
                         <div class="text-center mb-4">
                             <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
                             <h4 class="text-primary"><Address></Address></h4>
-                            <p class="mb-0"> Jl. Dolok Sanggul - Siborong - Borong No.42 <br> Kabupaten Tapanuli Utara, Indonesia</p>
+                            <p class="mb-0"> Jl. Com.Yos Sudarso No.35, Kota Beringin, Sibolga Kota, Kota Sibolga, Sumatera Utara 22513</p>
                         </div>
                         <div class="text-center mb-4">
                             <i class="fa fa-phone-alt fa-3x text-primary mb-3"></i>
                             <h4 class="text-primary">Ponsel</h4>
-                            <p class="mb-0">082285920152</p>
+                            <p class="mb-0">082366897979</p>
                         </div>
                        
                         <div class="text-center">
                             <i class="fa fa-envelope-open fa-3x text-primary mb-3"></i>
                             <h4 class="text-primary">Email</h4>
-                            <p class="mb-0">hkbpsabungan@gmail.com</p>
+                            <p class="mb-0">EMAILEXAMPLE@gmail.com</p>
                         </div>
                         
                     </div>
