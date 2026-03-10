@@ -335,10 +335,23 @@
             <p class="lead text-muted">Beberapa kenangan indah dari kegiatan dan pelayanan kami</p>
         </div>
 
-        @if($dataGaleri->isNotEmpty())
-            <div class="row g-4">
-                @foreach ($dataGaleri as $item)
-                    <!-- kode gambar seperti sebelumnya -->
+        @if($dataGaleri->count() > 0)
+            <div class="row g-3 justify-content-center">
+                @foreach($dataGaleri as $galeri)
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card border-0 shadow-sm h-100 overflow-hidden">
+                            <div style="height: 220px; overflow: hidden;">
+                                <img src="{{ asset('Admin/gambar/' . $galeri->gambar) }}" 
+                                    alt="{{ $galeri->judul }}" 
+                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
+                                    onmouseover="this.style.transform='scale(1.05)'"
+                                    onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <div class="card-body text-center py-2">
+                                <p class="card-text small fw-semibold text-dark mb-0">{{ $galeri->judul }}</p>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
 
@@ -347,15 +360,16 @@
                     Lihat Semua Galeri <i class="fa fa-arrow-right ms-2"></i>
                 </a>
             </div>
+
         @else
             <div class="text-center py-4">
-                <p class="text-muted fs-5">Galeri sedang dalam proses pengisian. Silakan kunjungi halaman galeri lengkap untuk update terbaru.</p>
+                <p class="text-muted fs-5">Galeri sedang dalam proses pengisian.</p>
                 <a href="{{ url('/galeri') }}" class="btn btn-outline-primary mt-3">Lihat Galeri Lengkap</a>
             </div>
         @endif
+
     </div>
 </section>
-
 
 <!-- Lokasi Mini di Home Start -->
 <section class="container-fluid py-5 bg-white">

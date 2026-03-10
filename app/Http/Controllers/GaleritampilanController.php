@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 use App\Models\Galeri;
 use Illuminate\Http\Request;
 
-class GaleritampilanController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
-        $dataGaleri = Galeri::all();
-        return view('tampilan.galeri', compact('dataGaleri'));
-
+        // Ambil 6 galeri terbaru berdasarkan created_at
+        $dataGaleri = Galeri::latest()->take(6)->get();
+        
+        return view('tampilan.home', compact('dataGaleri'));
     }
-}   
+}
