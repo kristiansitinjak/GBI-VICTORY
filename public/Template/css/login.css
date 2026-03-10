@@ -1,0 +1,359 @@
+/* login.css - GBI Victory Login Page */
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #1a3557;
+    --navy-light: #225582;
+    --gold: #c9a84c;
+    --gold-light: #e8c96d;
+    --white: #ffffff;
+    --card-bg: rgba(10, 20, 40, 0.72);
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+}
+
+/* ── FULL-SCREEN BACKGROUND ── */
+.bg-wrapper {
+    position: fixed;
+    inset: 0;
+    background: url('../img/GEREJA6.jpg') center/cover no-repeat;
+    z-index: 0;
+}
+
+/* Dark vignette overlay */
+.bg-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(10,25,55,0.55) 0%, transparent 65%),
+        linear-gradient(135deg, rgba(8,18,38,0.82) 0%, rgba(15,30,60,0.6) 50%, rgba(8,18,38,0.88) 100%);
+}
+
+/* Subtle animated light sweep */
+.bg-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(201,168,76,0.06) 50%,
+        transparent 60%
+    );
+    animation: sweep 8s ease-in-out infinite alternate;
+}
+
+@keyframes sweep {
+    from { transform: translateX(-15%); }
+    to   { transform: translateX(15%); }
+}
+
+/* ── LAYOUT: two columns over one background ── */
+.split-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ── LEFT: branding ── */
+.left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 44px;
+    color: var(--white);
+}
+
+/* Glow behind logo */
+.logo-wrap {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.logo-wrap::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.22) 0%, transparent 70%);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    50%       { opacity: 0.6; transform: translate(-50%,-50%) scale(1.15); }
+}
+
+.logo-wrap img {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(201,168,76,0.7);
+    box-shadow: 0 0 0 8px rgba(201,168,76,0.12), 0 10px 35px rgba(0,0,0,0.6);
+}
+
+/* Gold divider line */
+.divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 18px auto 22px;
+}
+
+.left-side h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-shadow: 0 2px 18px rgba(0,0,0,0.7);
+    margin-bottom: 18px;
+    animation: fade-up 0.9s ease both;
+}
+
+.left-side .tagline {
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.88);
+    letter-spacing: 0.4px;
+    animation: fade-up 1.1s ease both;
+}
+
+.left-side .tagline small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.98rem;
+    color: rgba(201,168,76,0.9);
+    font-style: italic;
+}
+
+/* ── RIGHT: form ── */
+.right-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 440px;
+    animation: fade-up 0.8s ease both;
+}
+
+/* Glass card */
+.card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--card-bg);
+    backdrop-filter: blur(22px) saturate(1.5);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    border: 1px solid rgba(201,168,76,0.22);
+    box-shadow:
+        0 2px 0 rgba(201,168,76,0.35) inset,
+        0 25px 60px rgba(0,0,0,0.55),
+        0 0 0 1px rgba(255,255,255,0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 2px 0 rgba(201,168,76,0.4) inset,
+        0 35px 70px rgba(0,0,0,0.65),
+        0 0 0 1px rgba(255,255,255,0.07);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e4a7a 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 28px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(201,168,76,0.4);
+    position: relative;
+}
+
+.card-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+}
+
+.card-body {
+    padding: 36px 32px 30px;
+}
+
+.login-box-msg {
+    text-align: center;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 26px;
+    letter-spacing: 0.3px;
+}
+
+/* Input groups */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 50px;
+    border-radius: 10px 0 0 10px !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    background: rgba(255,255,255,0.07) !important;
+    color: var(--white) !important;
+    padding: 0 18px;
+    font-size: 0.98rem;
+    font-family: 'Lato', sans-serif;
+    transition: border-color 0.25s, background 0.25s;
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,0.38);
+}
+
+.form-control:focus {
+    background: rgba(255,255,255,0.12) !important;
+    border-color: rgba(201,168,76,0.55) !important;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12) !important;
+    outline: none;
+}
+
+.input-group-text {
+    border-radius: 0 10px 10px 0 !important;
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-left: none !important;
+    color: var(--gold) !important;
+    padding: 0 18px;
+}
+
+/* Login button */
+.btn-login {
+    width: 100%;
+    height: 52px;
+    margin-top: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--navy);
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    box-shadow: 0 6px 22px rgba(201,168,76,0.35);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201,168,76,0.5);
+}
+
+.btn-login:hover::before {
+    left: 100%;
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* Back link */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--gold-light);
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+/* Alert */
+.alert-danger {
+    background: rgba(180, 40, 40, 0.3);
+    border: 1px solid rgba(255,100,100,0.35);
+    color: #ffaaaa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+}
+
+.alert-danger .close {
+    color: #ffaaaa;
+}
+
+/* ── Animations ── */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+    body, html { overflow: auto; }
+    .split-container { flex-direction: column; height: auto; min-height: 100vh; }
+    .left-side { padding: 50px 24px 30px; }
+    .left-side h1 { font-size: 2.1rem; }
+    .right-side { padding: 20px 18px 50px; }
+}
+
+@media (max-width: 480px) {
+    .left-side h1 { font-size: 1.8rem; }
+    .card-header { font-size: 1.3rem; }
+    .card-body { padding: 28px 20px 22px; }
+}

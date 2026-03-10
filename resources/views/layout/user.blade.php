@@ -43,9 +43,7 @@
   <div class="row gx-0">
       <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
           <div class="d-inline-flex align-items-center" style="height: 45px;">
-              <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://web.facebook.com/p/HKBP-Sabungan-Siborongborong-100090179947491/?_rdc=1&_rdr"><i class="fab fa-facebook-f fw-normal"></i></a>
-              <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.instagram.com/rnhkbpsabungansiborongborong/"><i class="fab fa-instagram fw-normal"></i></a>
-              <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="https://www.youtube.com/@hkbpsabungansiborongborong3710"><i class="fab fa-youtube fw-normal"></i></a>
+              <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/gbisibolgakotavictory?locale=id_ID"><i class="fab fa-facebook-f fw-normal"></i></a>
           </div>
       </div>
       <div class="col-lg-4 text-center text-lg-end mt-2">
@@ -111,15 +109,9 @@
           </a>
           <div class="d-flex align-items-center">
             <i class="fas fa-share fa-2x text-white me-2"></i>
-            <a class="btn-square btn btn-primary rounded-circle mx-1" href="https://web.facebook.com/profile.php?id=100090179947491" target="_blank">
+            <a class="btn-square btn btn-primary rounded-circle mx-1" href="https://www.facebook.com/gbisibolgakotavictory?locale=id_ID" target="_blank">
               <i class="fab fa-facebook-f"></i>
-            </a>
-            <a class="btn-square btn btn-primary rounded-circle mx-1" href="https://www.instagram.com/rena_hkbp_sabungan_sbb/" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a class="btn-square btn btn-primary rounded-circle mx-1" href="https://www.youtube.com/@hkbpsabungansiborongborong3710" target="_blank">
-              <i class="fab fa-youtube"></i>
-            </a>
+            </a>            
           </div>
         </div>
       </div>
