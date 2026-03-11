@@ -8,7 +8,13 @@ class WartatampilanController extends Controller
 {
     public function index()
     {
-        $dataWarta = Warta::all();
+        $dataWarta = Warta::latest()->get();
         return view('tampilan.warta', compact('dataWarta'));
+    }
+
+    public function show($id)
+    {
+        $warta = Warta::findOrFail($id);
+        return view('warta.detailwarta', compact('warta'));
     }
 }
