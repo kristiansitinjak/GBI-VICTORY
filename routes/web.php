@@ -25,7 +25,7 @@ use App\Http\Controllers\PendingJemaatController;
 */
 
 // =============================================
-// HALAMAN STATIS (tidak perlu controller)
+// HALAMAN STATIS
 // =============================================
 Route::get('/gereja', function () {
     return view('index', ["title" => "HOME"]);
@@ -35,12 +35,13 @@ Route::get('/gereja', function () {
 // HALAMAN PUBLIK - User Tampilan
 // =============================================
 
-// Home - menampilkan galeri terbaru
+// Home
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 // Profile & FAQ
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
 Route::get('/faq', 'App\Http\Controllers\FaqtampilanController@index');
+Route::get('/lokasi', 'App\Http\Controllers\HomeController@lokasi');
 
 // Warta Jemaat
 Route::get('/warta', 'App\Http\Controllers\WartatampilanController@index');
@@ -52,6 +53,8 @@ Route::get('/galeri', 'App\Http\Controllers\GaleritampilanController@index');
 // Jadwal Ibadah
 Route::get('/jadwalibadah', 'App\Http\Controllers\JadwalibadahtampilanController@index');
 Route::get('/jadwalibadah/{id}', 'App\Http\Controllers\JadwalibadahtampilanController@show');
+Route::get('/jadwalibadah/{id}', [JadwalibadahtampilanController::class, 'show']);
+Route::get('/jadwalibadah/{id}/nats', [JadwalibadahtampilanController::class, 'nats']);
 
 // Data Jemaat
 Route::get('/datajemaat', 'App\Http\Controllers\DatajemaattampilanController@index');
@@ -75,7 +78,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
     Route::group(['middleware' => ['admins']], function () {
 
-        Route::get('/dashboard', 'AdminController@index');
+        // Dashboard - gabung jadi 1, pakai WartaController karena dia yang kirim data chart & donasi
+        Route::get('/dashboard', 'WartaController@dashboard')->name('dashboard');
         Route::get('/logout', 'AdminController@logout');
 
         // Pending Jemaat
@@ -133,6 +137,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/editjadwalibadah/{jadwalibadahId}', 'JadwalibadahController@edit');
         Route::post('/updatejadwalibadah/{jadwalibadahId}', 'JadwalibadahController@update');
         Route::delete('/hapusjadwalibadah/{jadwalibadahId}', 'JadwalibadahController@destroy');
+
 
         // Donasi
         Route::get('/donasi', 'DonasiController@index');

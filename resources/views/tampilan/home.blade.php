@@ -266,67 +266,7 @@
     </div>
 </div>
 <!-- About End -->
-
-
-        <!-- Ayat Harian Start -->
-    <div class="container-fluid service py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                <h5 class="section-title px-3">Ibadah Minggu</h5>
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="jadwal-ibadah">
-                            <h2 class="ibadah-title">Ibadah I</h2>
-                            <p class="ibadah-time">Pkl. 09.00 Wib</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="jadwal-ibadah">
-                            <h2 class="ibadah-title">Ibadah II</h2>
-                            <p class="ibadah-time">Pkl. 11.00 Wib</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="jadwal-ibadah">
-                            <h2 class="ibadah-title">Ibadah III</h2>
-                            <p class="ibadah-time">Pkl. 17.00 Wib</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('https://labs.bible.org/api/?passage=votd&type=json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Gagal mengambil data: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.length > 0) {
-                        const verseText = data[0].text;
-                        document.getElementById('ayat').textContent = verseText;
-                    } else {
-                        throw new Error('Data tidak ditemukan.');
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    if (error.message === 'Failed to fetch') {
-                        document.getElementById('ayat').textContent = 'Gagal memuat ayat harian. Terjadi masalah dengan koneksi internet. Silakan coba lagi nanti.';
-                    } else {
-                        document.getElementById('ayat').textContent = 'Gagal memuat ayat harian. ' + error.message + ' Silakan coba lagi nanti.';
-                    }
-                });
-        });
-    </script>
-    <!-- Ayat Harian End -->
-
 <section class="container-fluid py-5 bg-light">
     <div class="container py-5">
         <div class="text-center mb-5">

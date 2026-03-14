@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\PendingJemaat;
 use App\Models\AdminNotification;
+use App\Models\Datakeluarga;
 use App\Models\Datajemaat;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // Tambahkan ini
+use Illuminate\Support\Facades\DB;
 
 class PendingJemaatController extends Controller
 {
@@ -17,26 +18,20 @@ class PendingJemaatController extends Controller
 
     public function submit(Request $request)
     {
-        // 1. Validasi dinamis: Pasangan hanya wajib jika checkbox nikah dicentang
-        $rules = [
-            'sektor' => 'required',
-            'alamat' => 'required',
-            'kk.nama' => 'required|string',
-            'kk.hp' => 'required|numeric',
-        ];
-
-        if ($request->has('sudah_nikah')) {
-            $rules['pasangan.nama'] = 'required|string';
-            $rules['pasangan.hp'] = 'required|numeric';
-            $rules['kk.tgl_nikah'] = 'required|date';
-        }
-
-        $request->validate($rules);
+        // Pasangan tidak wajib — hanya validasi jika nama diisi
+        $request->validate([
+            'sektor'        => 'required',
+            'alamat'        => 'required',
+            'kk.nama'       => 'required|string',
+            'kk.hp'         => 'required|numeric',
+            'pasangan.nama' => 'nullable|string',
+            'pasangan.hp'   => 'nullable|numeric',
+        ]);
 
         DB::transaction(function () use ($request) {
             $kk = $request->kk;
 
-            // Simpan Kepala Keluarga
+            // 1. Simpan Kepala Keluarga
             $pendingKK = PendingJemaat::create([
                 'namakeluarga'      => $kk['nama'],
                 'sektor'            => $request->sektor,
@@ -50,34 +45,34 @@ class PendingJemaatController extends Controller
                 'pekerjaan'         => $kk['pekerjaan'] ?? null,
                 'tgl_baptis'        => $kk['tgl_baptis'] ?? null,
                 'tgl_sidi'          => $kk['tgl_sidi'] ?? null,
-                'tgl_nikah'         => $request->has('sudah_nikah') ? $kk['tgl_nikah'] : null,
+                'tgl_nikah'         => !empty($kk['tgl_nikah']) ? $kk['tgl_nikah'] : null,
                 'status'            => PendingJemaat::STATUS_PENDING,
-                'hubungan_keluarga' => 'Kepala Keluarga'
+                'hubungan_keluarga' => 'Kepala Keluarga',
             ]);
 
-            // Simpan Pasangan (hanya jika checkbox nikah aktif)
-            if ($request->has('sudah_nikah') && !empty($request->pasangan['nama'])) {
+            // 2. Simpan Pasangan — cukup cek nama diisi, tidak perlu checkbox
+            if (!empty($request->pasangan['nama'])) {
                 $ps = $request->pasangan;
                 PendingJemaat::create([
                     'namakeluarga'      => $kk['nama'],
                     'sektor'            => $request->sektor,
                     'alamat'            => $request->alamat,
-                    'telepon'           => $ps['hp'],
+                    'telepon'           => $ps['hp'] ?? null,
                     'nama_lengkap'      => $ps['nama'],
                     'tempat_lahir'      => $ps['tempat_lahir'] ?? null,
                     'tanggal_lahir'     => $ps['tgl_lahir'] ?? null,
-                    'jenis_kelamin'     => $ps['jk'],
+                    'jenis_kelamin'     => $ps['jk'] ?? 'P',
                     'pendidikan'        => $ps['pendidikan'] ?? null,
                     'pekerjaan'         => $ps['pekerjaan'] ?? null,
                     'tgl_baptis'        => $ps['tgl_baptis'] ?? null,
                     'tgl_sidi'          => $ps['tgl_sidi'] ?? null,
-                    'tgl_nikah'         => $kk['tgl_nikah'], // Tanggal nikah sama dengan KK
+                    'tgl_nikah'         => !empty($ps['tgl_nikah']) ? $ps['tgl_nikah'] : null,
                     'status'            => PendingJemaat::STATUS_PENDING,
-                    'hubungan_keluarga' => 'Pasangan'
+                    'hubungan_keluarga' => 'Pasangan',
                 ]);
             }
 
-            // Simpan Anak-anak
+            // 3. Simpan Anak-anak
             if ($request->has('anak')) {
                 foreach ($request->anak as $anak) {
                     if (!empty($anak['nama'])) {
@@ -89,19 +84,20 @@ class PendingJemaatController extends Controller
                             'telepon'           => $anak['hp'] ?? null,
                             'tempat_lahir'      => $anak['tempat_lahir'] ?? null,
                             'tanggal_lahir'     => $anak['tgl_lahir'] ?? null,
-                            'jenis_kelamin'     => $anak['jk'],
+                            'jenis_kelamin'     => $anak['jk'] ?? 'L',
                             'pendidikan'        => $anak['pendidikan'] ?? null,
                             'pekerjaan'         => $anak['pekerjaan'] ?? null,
                             'tgl_baptis'        => $anak['tgl_baptis'] ?? null,
                             'tgl_sidi'          => $anak['tgl_sidi'] ?? null,
+                            'tgl_nikah'         => !empty($anak['tgl_nikah']) ? $anak['tgl_nikah'] : null,
                             'status'            => PendingJemaat::STATUS_PENDING,
-                            'hubungan_keluarga' => 'Anak'
+                            'hubungan_keluarga' => 'Anak',
                         ]);
                     }
                 }
             }
 
-            // Kirim Notifikasi
+            // 4. Kirim notifikasi ke admin
             AdminNotification::create([
                 'type'         => 'pending_jemaat',
                 'message'      => 'Pendaftaran Keluarga baru: ' . $kk['nama'],
@@ -113,50 +109,73 @@ class PendingJemaatController extends Controller
         return redirect()->back()->with('success', 'Data keluarga telah dikirim ke admin.');
     }
 
-
     public function index()
     {
-        // Query disederhanakan: Ambil yang berstatus 'pending' saja
         $pendings = PendingJemaat::where('status', PendingJemaat::STATUS_PENDING)
                         ->orderBy('created_at', 'desc')
                         ->get();
-                        
+
         return view('admin.pending_jemaat', compact('pendings'));
     }
 
     public function approve($id)
     {
-        $pending = PendingJemaat::findOrFail($id);
+        $pendingKK = PendingJemaat::where('id', $id)
+                        ->where('hubungan_keluarga', 'Kepala Keluarga')
+                        ->firstOrFail();
 
-        // Gunakan Transaction agar jika salah satu gagal, semua dibatalkan
-        DB::transaction(function () use ($pending, $id) {
-            
-            // 1. Simpan SEMUA data jemaat (Nama, Tgl Lahir, Baptis, dll) ke tabel utama
-            // pastikan $fillable di model Datajemaat sudah lengkap
-            Datajemaat::create($pending->only([
-                'namakeluarga', 'sektor', 'alamat', 'telepon', 
-                'nama_lengkap', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin',
-                'pendidikan', 'pekerjaan', 'tgl_baptis', 'tgl_sidi', 
-                'tgl_nikah', 'hubungan_keluarga'
-            ]));
+        // Ambil SEMUA anggota (KK + Pasangan + Anak) berdasarkan namakeluarga + sektor
+        $semuaAnggota = PendingJemaat::where('namakeluarga', $pendingKK->namakeluarga)
+                            ->where('sektor', $pendingKK->sektor)
+                            ->where('status', PendingJemaat::STATUS_PENDING)
+                            ->get();
 
-            // 2. Update status pendaftaran menjadi approved
-            $pending->update(['status' => PendingJemaat::STATUS_APPROVED]);
+        DB::transaction(function () use ($pendingKK, $semuaAnggota) {
 
-            // 3. Tandai notifikasi sebagai sudah dibaca
-            AdminNotification::where('reference_id', $id)
-                            ->where('type', 'pending_jemaat')
-                            ->update(['is_read' => true]);
+            // 1. Buat record Datakeluarga (induk keluarga)
+            $keluarga = Datakeluarga::create([
+                'nomor_keluarga' => Datakeluarga::generateNomor(),
+                'namakeluarga'   => $pendingKK->namakeluarga,
+                'sektor'         => $pendingKK->sektor,
+                'alamat'         => $pendingKK->alamat,
+                'telepon'        => $pendingKK->telepon,
+                'status'         => 'aktif',
+            ]);
+
+            // 2. Pindahkan semua anggota ke datajemaats dengan keluarga_id yang sama
+            foreach ($semuaAnggota as $anggota) {
+                Datajemaat::create([
+                    'keluarga_id'       => $keluarga->id,
+                    'nama_lengkap'      => $anggota->nama_lengkap,
+                    'hubungan_keluarga' => $anggota->hubungan_keluarga,
+                    'tempat_lahir'      => $anggota->tempat_lahir,
+                    'tanggal_lahir'     => $anggota->tanggal_lahir,
+                    'jenis_kelamin'     => $anggota->jenis_kelamin,
+                    'pendidikan'        => $anggota->pendidikan,
+                    'pekerjaan'         => $anggota->pekerjaan,
+                    'telepon'           => $anggota->telepon,
+                    'tgl_baptis'        => $anggota->tgl_baptis,
+                    'tgl_sidi'          => $anggota->tgl_sidi,
+                    'tgl_nikah'         => $anggota->tgl_nikah,
+                ]);
+
+                $anggota->update(['status' => PendingJemaat::STATUS_APPROVED]);
+            }
+
+            // 3. Tandai notifikasi sebagai dibaca
+            AdminNotification::where('reference_id', $pendingKK->id)
+                             ->where('type', 'pending_jemaat')
+                             ->update(['is_read' => true]);
         });
 
-        return redirect()->back()->with('success', 'Pendaftaran disetujui dan seluruh detail jemaat masuk ke database.');
+        return redirect()->back()->with('success',
+            'Pendaftaran keluarga ' . $pendingKK->namakeluarga . ' disetujui! Semua anggota masuk ke data jemaat.'
+        );
     }
-
 
     public function reject($id)
     {
         $pending = PendingJemaat::findOrFail($id);
-        
         $pending->update(['status' => PendingJemaat::STATUS_REJECTED]);
 
         AdminNotification::where('reference_id', $id)

@@ -6,29 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('datakeluargas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('datajemaat_id');
-            $table->foreign('datajemaat_id')->references('id')->on('datajemaats')->onDelete('cascade');
-            $table->string('namaayah');
-            $table->string('namaibu');
-            $table->string('namaanak');
+            $table->string('nomor_keluarga')->unique(); // Auto: KK-0001
+            $table->string('namakeluarga');
+            $table->enum('sektor', [
+                'Wijk I','Wijk II','Wijk III','Wijk IV','Wijk V',
+                'Wijk VI','Wijk VII','Wijk VIII','Wijk IX','Wijk X','Wijk XI'
+            ]);
+            $table->string('alamat');
+            $table->string('telepon')->nullable();
+            $table->enum('status', ['aktif', 'pending'])->default('pending');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('datakeluargas');

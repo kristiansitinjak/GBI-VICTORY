@@ -12,27 +12,42 @@ class Datajemaat extends Model
     protected $table = 'datajemaats';
 
     protected $fillable = [
-        'namakeluarga',
-        'sektor',
-        'alamat',
-        'telepon',
+        'keluarga_id',
         'nama_lengkap',
+        'hubungan_keluarga',
         'tempat_lahir',
         'tanggal_lahir',
         'jenis_kelamin',
         'pendidikan',
         'pekerjaan',
+        'telepon',
         'tgl_baptis',
         'tgl_sidi',
         'tgl_nikah',
-        'hubungan_keluarga', // Penting untuk membedakan peran dalam keluarga
     ];
 
-    // Jika Anda ingin menggunakan format tanggal otomatis (Opsional)
-    protected $dates = ['tanggal_lahir', 'tgl_baptis', 'tgl_sidi', 'tgl_nikah'];
+    protected $dates = [
+        'tanggal_lahir',
+        'tgl_baptis',
+        'tgl_sidi',
+        'tgl_nikah',
+    ];
 
+    /**
+     * Relasi ke Datakeluarga (induk)
+     */
     public function keluarga()
     {
-        return $this->belongsTo(Datakeluarga::class);
+        return $this->belongsTo(Datakeluarga::class, 'keluarga_id');
+    }
+
+    /**
+     * Helper: hitung umur otomatis
+     */
+    public function getUmurAttribute()
+    {
+        return $this->tanggal_lahir
+            ? \Carbon\Carbon::parse($this->tanggal_lahir)->age
+            : '-';
     }
 }
