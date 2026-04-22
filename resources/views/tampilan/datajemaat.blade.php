@@ -43,7 +43,7 @@
                     @php
                         $sektorOrder = [
                             'Wijk I','Wijk II','Wijk III','Wijk IV','Wijk V',
-                            'Wijk VI','Wijk VII','Wijk VIII','Wijk IX','Wijk X','Wijk XI'
+
                         ];
                         $dataArray = $data->toArray();
                         usort($dataArray, function($a, $b) use ($sektorOrder) {

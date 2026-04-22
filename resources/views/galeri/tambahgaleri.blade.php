@@ -29,7 +29,7 @@
                             <label for="kategori">Kategori</label>
                             <select class="form-control @error('kategori') is-invalid @enderror" id="kategori" name="kategori">
                                 <option value="" disabled selected>Pilih kategori</option>
-                                <option value="pastoral">Pastoral</option>
+                                <option value="pastoral">Lingkungan</option>
                                 <option value="kegiatan">Kegiatan</option>
                             </select>
                             @error('kategori')

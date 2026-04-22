@@ -61,7 +61,7 @@
                         <label class="form-label-custom">Sektor (Wijk) <span class="text-danger">*</span></label>
                         <select class="form-select border-soft" name="sektor" required>
                             <option value="">-- Pilih Sektor --</option>
-                            @foreach(['I','II','III','IV','V','VI','VII','VIII','IX','X','XI'] as $roman)
+                            @foreach(['I','II','III','IV','V'] as $roman)
                                 <option value="Wijk {{ $roman }}" {{ old('sektor') == 'Wijk '.$roman ? 'selected' : '' }}>
                                     Wijk {{ $roman }}
                                 </option>

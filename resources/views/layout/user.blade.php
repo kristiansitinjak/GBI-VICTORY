@@ -105,7 +105,7 @@
           </a>
           <a href="tel:0877-3996-3516"><i class="fas fa-phone me-2"></i>0877-3996-3516</a>
           <a href="mailto:siborongboronghkbpsabungan@gmail.com">
-            <i class="fas fa-envelope me-2"></i> EMAILEXAMPLE@gmail.com
+            <i class="fas fa-envelope me-2"></i> gbivictorysibolga@gmail.com
           </a>
           <div class="d-flex align-items-center">
             <i class="fas fa-share fa-2x text-white me-2"></i>
@@ -139,13 +139,7 @@
   <div class="container">
       <div class="row g-4 align-items-center">
           <div class="col-md-6 text-center text-md-end mb-md-0">
-              <i class="fas fa-copyright me-2"></i>2024 Gereja Bethel Indonesia Victory
-          </div>
-          <div class="col-md-6 text-center text-md-start">
-              <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-              <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-              <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-              XXXXXXXXXX
+              <i class="fas fa-copyright me-2"></i>2026 Gereja Bethel Indonesia Victory
           </div>
           </div>
       </div>

@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class DatajemaattampilanController extends Controller
 {
-    public function index()
-    {
-        $data = datajemaat::all();
+public function index()
+{
+    $data = Datakeluarga::where('status', 'aktif')->get();
     return view('tampilan.datajemaat', compact('data'));
-
-    }
+}
         // public function search(Request $request)
         // {
         //     $search = $request->query('search');

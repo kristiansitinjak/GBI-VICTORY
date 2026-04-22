@@ -36,8 +36,8 @@
                 <div class="pstat-item">
                     <div class="pstat-icon"><i class="fa fa-pray"></i></div>
                     <div>
-                        <div class="pstat-num">11</div>
-                        <div class="pstat-label">Sektor Wijk</div>
+                        <div class="pstat-num">5</div>
+                        <div class="pstat-label">Sektor Daerah</div>
                     </div>
                 </div>
                 <div class="pstat-item">

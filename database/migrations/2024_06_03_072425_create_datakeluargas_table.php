@@ -13,8 +13,7 @@ return new class extends Migration
             $table->string('nomor_keluarga')->unique(); // Auto: KK-0001
             $table->string('namakeluarga');
             $table->enum('sektor', [
-                'Wijk I','Wijk II','Wijk III','Wijk IV','Wijk V',
-                'Wijk VI','Wijk VII','Wijk VIII','Wijk IX','Wijk X','Wijk XI'
+                'Wijk I','Wijk II','Wijk III','Wijk IV','Wijk V'
             ]);
             $table->string('alamat');
             $table->string('telepon')->nullable();

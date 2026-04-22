@@ -16,9 +16,9 @@
         <h2>Momen Bersama GBI Victory</h2>
     </div>
     <p class="galeri-intro-text">
-        Galeri dari GBI Victory berisi tentang kegiatan gereja dan kunjungan pastoral. 
+        Galeri dari GBI Victory berisi tentang kegiatan gereja dan kunjungan Lingkungan. 
         Dalam galeri ini, Anda akan menemukan momen-momen yang mengabadikan berbagai kegiatan 
-        gereja yang diadakan di GBI Victory, serta kunjungan pastoral yang dilakukan oleh gereja tersebut.
+        gereja yang diadakan di GBI Victory, serta kunjungan Lingkungan yang dilakukan oleh gereja tersebut.
         Setiap gambar menceritakan cerita tentang kebersamaan, ibadah, dan pelayanan jemaat.
     </p>
 </section>
@@ -30,7 +30,7 @@
             <i class="fa fa-church"></i> Kegiatan Gereja
         </button>
         <button class="gtab-btn" data-tab="pastoral">
-            <i class="fa fa-hands-helping"></i> Pastoral
+            <i class="fa fa-hands-helping"></i>Kegiatan Sosial
         </button>
     </div>
 

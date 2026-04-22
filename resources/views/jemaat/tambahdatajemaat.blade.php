@@ -19,7 +19,7 @@
                         <label class="fw-bold">Sektor (Wijk) <span class="text-danger">*</span></label>
                         <select class="form-select border-primary" name="sektor" required>
                             <option value="">-- Pilih Sektor --</option>
-                            @foreach(['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'] as $roman)
+                            @foreach(['I', 'II', 'III', 'IV', 'V'] as $roman)
                                 <option value="Wijk {{ $roman }}">Wijk {{ $roman }}</option>
                             @endforeach
                         </select>
