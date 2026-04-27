@@ -2,6 +2,82 @@
 
 @section('container')
 
+<style>
+/* ── Mobile Responsive Fix ── */
+@media (max-width: 768px) {
+    .pendaftaran-section {
+        padding: 1rem !important;
+        overflow-x: hidden;
+    }
+
+    .form-card {
+        padding: 1rem !important;
+        border-radius: 8px !important;
+    }
+
+    .form-card-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+    }
+
+    .form-card-header h2 {
+        font-size: 1.1rem !important;
+    }
+
+    .form-card-header p {
+        font-size: 0.85rem !important;
+    }
+
+    .form-section-title {
+        font-size: 0.9rem !important;
+    }
+
+    /* Tabel scroll horizontal di mobile */
+    .table-responsive {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+    }
+
+    #tabelJemaat {
+        min-width: 950px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Scroll hint */
+    .table-scroll-hint {
+        display: block !important;
+        text-align: center;
+        font-size: 0.78rem;
+        color: #888;
+        margin-bottom: 6px;
+        font-style: italic;
+    }
+
+    .form-footer {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+
+    .btn-batal, .btn-kirim {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .page-header-pendaftaran h1 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .table-scroll-hint {
+        display: none !important;
+    }
+}
+</style>
+
 <!-- Header -->
 <div class="page-header-pendaftaran">
     <p class="subtitle">GBI Victory Sibolga</p>
@@ -83,6 +159,11 @@
                     <i class="fa fa-users"></i> Data Anggota Keluarga
                 </div>
 
+                <!-- Scroll hint untuk mobile -->
+                <span class="table-scroll-hint">
+                    <i class="fa fa-arrows-alt-h"></i> Geser ke kanan untuk melihat semua kolom
+                </span>
+
                 <div class="table-responsive shadow-sm rounded">
                     <table class="table table-bordered align-middle text-center"
                            id="tabelJemaat" style="min-width: 1400px; font-size: 0.85rem;">
@@ -106,9 +187,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- ══════════════════════════════ -->
-                            <!-- A. KEPALA KELUARGA            -->
-                            <!-- ══════════════════════════════ -->
+                            <!-- A. KEPALA KELUARGA -->
                             <tr class="row-category">
                                 <td colspan="12">A. Kepala Keluarga</td>
                             </tr>
@@ -128,14 +207,11 @@
                                 <td><input type="text" name="kk[hp]" class="form-control form-control-sm border-soft only-number" required placeholder="No.Handphone *" maxlength="15" value="{{ old('kk.hp') }}"></td>
                                 <td><input type="date" name="kk[tgl_baptis]" class="form-control form-control-sm border-soft" value="{{ old('kk.tgl_baptis') }}"></td>
                                 <td><input type="date" name="kk[tgl_sidi]" class="form-control form-control-sm border-soft" value="{{ old('kk.tgl_sidi') }}"></td>
-                                {{-- Kolom nikah langsung aktif, tidak perlu checkbox --}}
                                 <td><input type="date" name="kk[tgl_nikah]" class="form-control form-control-sm border-soft" value="{{ old('kk.tgl_nikah') }}"></td>
                                 <td>-</td>
                             </tr>
 
-                            <!-- ══════════════════════════════ -->
-                            <!-- B. PASANGAN (langsung aktif)  -->
-                            <!-- ══════════════════════════════ -->
+                            <!-- B. PASANGAN -->
                             <tr class="row-category">
                                 <td colspan="12">B. Pasangan (Istri/Suami) — <small class="text-muted">Opsional, isi jika ada</small></td>
                             </tr>
@@ -159,9 +235,7 @@
                                 <td>-</td>
                             </tr>
 
-                            <!-- ══════════════════════════════ -->
-                            <!-- C. ANAK                       -->
-                            <!-- ══════════════════════════════ -->
+                            <!-- C. ANAK -->
                             <tr class="row-category">
                                 <td colspan="12">
                                     <div class="d-flex justify-content-between align-items-center">
