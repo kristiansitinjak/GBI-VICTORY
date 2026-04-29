@@ -1,0 +1,54 @@
+<!-- Footer Start -->
+<div class="container-fluid footer py-2">
+  <div class="container py-5">
+    <div class="row g-5">
+      <!-- Left Section -->
+      <div class="col-md-6 col-lg-6 col-xl-8">
+        <div class="footer-item d-flex flex-column">
+          <h4 class="mb-4 text-white">Gereja Bethel Indonesia Victory</h4>
+          <a href="https://www.google.co.id/maps/search/Jl.+Tugu+no.+2,+Siaro,+Siborongborong,+Kabupaten+Tapanuli+Utara/@2.2192168,98.973798,16z/data=!3m1!4b1?hl=id&entry=ttu">
+            <i class="fas fa-home me-2"></i> Jl. Com.Yos Sudarso No.35, Kota Beringin, Sibolga Kota, Kota Sibolga, Sumatera Utara 22513
+          </a>
+          <a href="tel:0877-3996-3516"><i class="fas fa-phone me-2"></i>0877-3996-3516</a>
+          <a href="mailto:siborongboronghkbpsabungan@gmail.com">
+            <i class="fas fa-envelope me-2"></i> gbivictorysibolga@gmail.com
+          </a>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-share fa-2x text-white me-2"></i>
+            <a class="btn-square btn btn-primary rounded-circle mx-1" href="https://www.facebook.com/gbisibolgakotavictory?locale=id_ID" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>            
+          </div>
+        </div>
+      </div>
+      <!-- Right Section -->
+      <div class="col-md-6 col-lg-6 col-xl-4">
+        <div class="footer-item d-flex flex-column" style="margin-left: -20px;"> <!-- Adjust margin-left here -->
+          <h4 class="mb-4 text-white">Useful links</h4>
+          <a href="/warta"><i class="fas fa-angle-right me-2"></i> Warta</a>
+          <a href="/jadwalibadah"><i class="fas fa-angle-right me-2"></i> Jadwal</a>
+          <a href="/donasi"><i class="fas fa-angle-right me-2"></i> Donasi</a>
+          <a href="/galeri"><i class="fas fa-angle-right me-2"></i> Galeri</a>
+          <a href="/datajemaat"><i class="fas fa-angle-right me-2"></i> Data Jemaat</a>
+          <a href="/profile"><i class="fas fa-angle-right me-2"></i> Profil</a>
+          <a href="/lokasi"><i class="fas fa-angle-right me-2"></i> Lokasi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright text-body py-4">
+  <div class="container">
+      <div class="row g-4 align-items-center">
+          <div class="col-md-6 text-center text-md-end mb-md-0">
+              <i class="fas fa-copyright me-2"></i>2026 Gereja Bethel Indonesia Victory
+          </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Copyright End -->
