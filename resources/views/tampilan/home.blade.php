@@ -257,7 +257,7 @@
 
                 <div class="section-footer text-start">
                     <p style="text-align: justify; line-height: 1.9; font-size: 1.15rem; color: #444;">
-                        Sebagai pusat kegiatan ibadah, sosial, dan pendidikan bagi masyarakat, HKBP Sabungan telah menjadi lambang kekuatan iman dan pelayanan dalam menghadapi berbagai cobaan. Dengan fondasi sejarah yang kokoh, gereja ini terus menjadi terang bagi dunia sekitarnya, memperkuat komunitasnya, dan memberkati masyarakat yang dilayaninya.
+                        Sebagai pusat kegiatan ibadah, sosial, dan pendidikan bagi masyarakat, GBI Victory Sibolga telah menjadi lambang kekuatan iman dan pelayanan dalam menghadapi berbagai cobaan. Dengan fondasi sejarah yang kokoh, gereja ini terus menjadi terang bagi dunia sekitarnya, memperkuat komunitasnya, dan memberkati masyarakat yang dilayaninya.
                     </p>
                 </div>
 

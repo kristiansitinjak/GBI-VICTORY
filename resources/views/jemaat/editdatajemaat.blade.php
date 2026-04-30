@@ -61,11 +61,23 @@
 
                             <!-- Data Alamat & Sektor -->
                             <div class="col-md-6 mb-3">
-                                <label class="fw-bold">Sektor (Wijk)</label>
+                                <label class="fw-bold">Sektor</label>
+                                @php
+                                    $sektorList = [
+                                        'FA Pintu Angin - Mela',
+                                        'FA Ketapang - K. Keterapung',
+                                        'FA Simare-mare - Sibolga Julu',
+                                        'FA Kota',
+                                        'FA Parombuman',
+                                        'FA Pandan',
+                                    ];
+                                @endphp
                                 <select class="form-select border-primary" name="sektor" required>
-                                    @foreach(['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'] as $roman)
-                                        @php $val = "Wijk $roman"; @endphp
-                                        <option value="{{ $val }}" {{ $datajemaat->sektor == $val ? 'selected' : '' }}>{{ $val }}</option>
+                                    <option value="">-- Pilih Sektor --</option>
+                                    @foreach($sektorList as $sektor)
+                                        <option value="{{ $sektor }}" {{ $datajemaat->sektor == $sektor ? 'selected' : '' }}>
+                                            {{ $sektor }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>

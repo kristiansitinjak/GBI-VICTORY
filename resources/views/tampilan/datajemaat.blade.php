@@ -42,8 +42,12 @@
                 <tbody>
                     @php
                         $sektorOrder = [
-                            'Wijk I','Wijk II','Wijk III','Wijk IV','Wijk V',
-
+                            'FA Pintu Angin - Mela',
+                            'FA Ketapang - K. Keterapung',
+                            'FA Simare-mare - Sibolga Julu',
+                            'FA Kota',
+                            'FA Parombuman',
+                            'FA Pandan',
                         ];
                         $dataArray = $data->toArray();
                         usort($dataArray, function($a, $b) use ($sektorOrder) {

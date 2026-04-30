@@ -33,7 +33,6 @@
         font-size: 0.9rem !important;
     }
 
-    /* Tabel scroll horizontal di mobile */
     .table-responsive {
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
@@ -46,7 +45,6 @@
         font-size: 0.75rem !important;
     }
 
-    /* Scroll hint */
     .table-scroll-hint {
         display: block !important;
         text-align: center;
@@ -93,7 +91,6 @@
 
 <section class="pendaftaran-section">
 
-    <!-- Alert Success -->
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show mb-4">
             <i class="fa fa-check-circle me-2"></i>{{ session('success') }}
@@ -101,7 +98,6 @@
         </div>
     @endif
 
-    <!-- Alert Error -->
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show mb-4">
             <i class="fa fa-exclamation-circle me-2"></i><strong>Terdapat kesalahan:</strong>
@@ -114,7 +110,6 @@
         </div>
     @endif
 
-    <!-- Form Card -->
     <div class="form-card">
         <div class="form-card-header">
             <div class="form-header-icon"><i class="fa fa-file-alt"></i></div>
@@ -132,14 +127,24 @@
                 <div class="form-section-title">
                     <i class="fa fa-map-marker-alt"></i> Informasi Umum
                 </div>
+                @php
+                    $sektorList = [
+                        'FA Pintu Angin - Mela',
+                        'FA Ketapang - K. Keterapung',
+                        'FA Simare-mare - Sibolga Julu',
+                        'FA Kota',
+                        'FA Parombuman',
+                        'FA Pandan',
+                    ];
+                @endphp
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label-custom">Sektor (Wijk) <span class="text-danger">*</span></label>
+                        <label class="form-label-custom">Sektor <span class="text-danger">*</span></label>
                         <select class="form-select border-soft" name="sektor" required>
                             <option value="">-- Pilih Sektor --</option>
-                            @foreach(['I','II','III','IV','V'] as $roman)
-                                <option value="Wijk {{ $roman }}" {{ old('sektor') == 'Wijk '.$roman ? 'selected' : '' }}>
-                                    Wijk {{ $roman }}
+                            @foreach($sektorList as $sektor)
+                                <option value="{{ $sektor }}" {{ old('sektor') == $sektor ? 'selected' : '' }}>
+                                    {{ $sektor }}
                                 </option>
                             @endforeach
                         </select>
@@ -159,7 +164,6 @@
                     <i class="fa fa-users"></i> Data Anggota Keluarga
                 </div>
 
-                <!-- Scroll hint untuk mobile -->
                 <span class="table-scroll-hint">
                     <i class="fa fa-arrows-alt-h"></i> Geser ke kanan untuk melihat semua kolom
                 </span>

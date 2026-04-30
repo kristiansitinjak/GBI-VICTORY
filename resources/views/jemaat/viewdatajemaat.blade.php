@@ -45,7 +45,7 @@
                             <p class="fw-bold mb-0">{{ $keluarga->namakeluarga }}</p>
                         </div>
                         <div class="col-md-3 border-start">
-                            <label class="text-muted small fw-bold">Sektor / Wijk</label>
+                            <label class="text-muted small fw-bold">Sektor</label>
                             <p class="mb-0"><span class="badge bg-info">{{ $keluarga->sektor }}</span></p>
                         </div>
                         <div class="col-md-3 border-start">
