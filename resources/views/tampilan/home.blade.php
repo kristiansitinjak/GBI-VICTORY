@@ -366,8 +366,8 @@
                         <div class="card border-0 shadow-sm p-4 text-center">
                             <i class="fa fa-envelope-open fa-3x text-primary mb-3"></i>
                             <h5 class="fw-bold text-dark mb-2">Email</h5>
-                            <p class="text-muted mb-0">EMAILEXAMPLE@gmail.com</p>
-                            <a href="mailto:EMAILEXAMPLE@gmail.com" class="btn btn-sm btn-outline-primary mt-2">
+                            <p class="text-muted mb-0">gbivictorysibolga@gmail.com</p>
+                            <a href="mailto:gbivictorysibolga@gmail.com" class="btn btn-sm btn-outline-primary mt-2">
                                 Kirim Email
                             </a>
                         </div>
